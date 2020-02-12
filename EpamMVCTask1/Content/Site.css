@@ -1,0 +1,147 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+/*.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}*/
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+/*ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #f1f1f1;
+    /*position: fixed;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+    Change the link color on hover 
+    li a:hover {
+        background-color: #555;
+        color: white;
+    }*/
+ul {
+    list-style-type: none;
+    background-color: #f1f1f1;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+    li a.active {
+        background-color: #4CAF50;
+        color: white;
+    }
+
+    li a:hover:not(.active) {
+        background-color: #555;
+        color: white;
+    }
+nav {
+    top: 100px;
+    width: 20%;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    margin: 0;
+    padding: 0;
+    left: 75%;
+}
+main {
+    margin-top: 60px;
+    margin-right: 20%;
+    padding: 1px 16px;
+    height: 1000px;
+}
+img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    object-position: 0 0;
+    position: relative;
+}
+
+.title {
+    position: absolute;
+    top: 20%;
+    left: 40%;
+    width: 100%;
+    border-color: none;
+    color: white;
+}
+
+.form {
+    width: 40%;
+    margin-left:40%;
+}
+.input{
+    border-radius: 10px;
+    border: 1px solid;
+    color: darkgreen;
+    height: 40px;
+    width: 250px;
+}
+
+.p-submit{
+    margin-top: 10px;
+}
+
+.button {
+    border-radius: 10px;
+    border: 1px solid darkgreen;
+    background-color: darkkhaki;
+    width: 170px;
+    height: 40px;
+}
+.center{
+    text-align:center;
+    margin-left: 60px;
+}
+
+.gender{
+    display: flex;
+}
+
+.female{
+    margin-left: 15px;
+}
+
+.radio-button,
+.checkbox {
+    width: 15px;
+    height: 15px;
+    background-color: forestgreen;
+}
+
+.block{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+b{
+    color: darkred;
+}
+
+.top-ident{
+    margin-top: 40px;
+}

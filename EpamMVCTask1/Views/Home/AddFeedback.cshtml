@@ -1,0 +1,24 @@
+﻿@model IEnumerable<EpamMVCTask1.Models.Feedback>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h3 class="center">Enter new feedback</h3>
+
+    @using (Html.BeginForm("AddFeedback", "Home", FormMethod.Post, new { @class = "form" }))
+    {
+        <p>Input you name</p>
+        @Html.TextBox("Name", "", new { @class= "input" });
+        <p>Input your feedback</p>
+        @Html.TextArea("Text", "", new { @class = "input" });
+        <br>
+        <p class="p-submit"><input type="submit" value="Add feedback" class="button" /></p>
+    }
+
+</body>
+</html>

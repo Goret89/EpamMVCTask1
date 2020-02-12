@@ -1,0 +1,72 @@
+﻿@using EpamMVCTask1.Helpers
+
+@{
+    ViewBag.Title = "Profile";
+}
+
+<h2>Profile</h2>
+@using (Html.BeginForm("Profile", "Home", FormMethod.Post))
+{
+<div class="block">
+    <div>
+        <p>Enter your name</p>
+        <input type="text" name="name" class="input" />
+    </div>
+
+    <div>
+        <p>Your login</p>
+        <input type="text" name="login" class="input" />
+    </div>
+
+    <div>
+        <p>Your email</p>
+        <input type="email" name="email" class="input" />
+    </div>
+
+    <div>
+        <p>Your password</p>
+        <input type="password" name="password" class="input" />
+    </div>
+
+    <div>
+        <p>Date of your Birthday</p>
+        @*<input type="datetime" name="date" class="input" />*@
+    <div>
+        <input type="date" name="date" class="input"/>
+    </div>
+    </div>
+
+    <div>
+        <h4>Gender:</h4>
+        <div class="gender">
+            <p>Male</p> <input type="radio" name="Gender" value="Male" checked="checked" class="radio-button" />
+
+            <p class="female">Female</p><input type="radio" name="Gender" value="Female" class="radio-button" />
+        </div>
+    </div>
+
+    <div class="top-ident">
+        <div class="gender">
+            <input type="checkbox" value="true" name="checkbox1" class="checkbox" /><p>Want to recieve email notifications</p>
+        </div>
+    </div>
+    @*<div>
+        @Helpers.CreateUlList(new string[] { "A", "B", "C"}, "")
+    </div>*@
+    <div>
+        @*<select>
+            <option>--Семейный статус--</option>
+            <option>Замужем/женат</option>
+            <option>Не замужем/женат</option>
+        </select>*@
+        @Helpers.CreateSelectList(new string[] { "--Marital status--", "Married", "Not married" }, "input", "marital")
+    
+        @Helpers.CreateSelectList(new string[] { "--Have children--", "Yes", "No"}, "input p-submit", "children")
+    </div>
+
+
+    <input type="submit" value="Submit" class="button" />
+</div>
+
+}
+

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<EpamMVCTask1.Models.Article>
+@{
+    ViewBag.Title = "Index";
+}
+
+@*<h2>Index</h2>*@
+@*<section>
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#news">News</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about">About</a></li>
+        </ul>
+    </nav>
+    <main>*@
+        @foreach (var art in Model)
+        {
+            <h3>@art.Name</h3>
+            <h6>@art.DatePublish</h6>
+            <p>@art.Text</p>
+        }
+    @*</main>
+
+</section>*@

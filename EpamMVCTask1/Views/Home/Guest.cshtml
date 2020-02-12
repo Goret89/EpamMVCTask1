@@ -1,0 +1,18 @@
+﻿@model IEnumerable<EpamMVCTask1.Models.Feedback>
+@{
+    ViewBag.Title = "Guest";
+}
+
+
+@{ Html.RenderPartial("AddFeedback");}
+
+<h3>Feedbacks</h3>
+
+@foreach (var f in Model)
+{
+    <h4>@f.Name</h4>
+    <h6>@f.FeedbackDate</h6>
+    <p>@f.Text</p>
+    <p>-------------------------------</p>
+
+}
