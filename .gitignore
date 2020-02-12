@@ -30,12 +30,12 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
-packages/*
-EpamMVCTask1/bin/*
-EpamMVCTask1/obj/*
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
+packages/
+EpamMVCTask1/bin/
+EpamMVCTask1/obj/
 
 # Uncomment if you have tasks that create the project's static files in wwwroot
 #wwwroot/
