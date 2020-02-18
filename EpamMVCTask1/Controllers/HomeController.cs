@@ -1,4 +1,6 @@
-﻿using EpamMVCTask1.Extensions;
+﻿//using EpamMVCTask1.DLL.Models;
+using EpamMVCTask1.DLL.Models;
+using EpamMVCTask1.Extensions;
 using EpamMVCTask1.Models;
 using System;
 using System.Collections.Generic;
@@ -10,18 +12,17 @@ namespace EpamMVCTask1.Controllers
 {
     public class HomeController : Controller
     {
-        Initializer initializer = new Initializer();
+        //Initializer initializer = new Initializer();
+        BlogContext initializer = new BlogContext();
         // GET: Home
         public ActionResult Index()
         {
-            //Initializer initializer = new Initializer();
-            return View(initializer.articles);
+            return View(initializer.Articles); //initializer.articles
         }
         public ActionResult Guest()
         {
-            
-            return View(Initializer.feedbacks);
-        }
+            return View(initializer.Feedbacks);/*Initializer.feedbacks*/
+        }/**/
         //[HttpPost]
         //public RedirectResult Guest(Feedback feedback)
         //{
@@ -33,36 +34,34 @@ namespace EpamMVCTask1.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddFeedback(Feedback feedback)
+        public ActionResult AddFeedback(DLL.Models.Feedback feedback)
         {
-            feedback.FeedbackDate = DateTime.Now;
-            Initializer.feedbacks.Add(feedback);
+            AddData.AddFeedback(feedback, initializer);
             return Redirect("~/Home/Guest");
         }
         
-        public ActionResult Profile(string name, string login, string email, string password,
-            string date, string Gender, bool? checkbox1, string marital, string children)
+        public ActionResult Profile(FormCollection form) // string name, string login, string email, string password,nstring date, string Gender, bool? checkbox1, string marital, string children
         {
             string check = "";
 
-            if (checkbox1 == null)
-                check = "False";
+            if (form["checkbox1"] == null)
+                check = "false";
             else
             {
-                check = $"{checkbox1}";
+                check = $"{form["checkbox1"]}";
             }
              
             if (Request.HttpMethod == "POST")
             {
-                TempData["Name"] = name;
-                TempData["Login"] = login;
-                TempData["Email"] = email;
-                TempData["Password"] = password;
-                TempData["Date"] = date;
-                TempData["Gender"] = Gender;
+                TempData["Name"] = form["name"];
+                TempData["Login"] = form["login"];
+                TempData["Email"] = form["email"];
+                TempData["Password"] = form["password"];
+                TempData["Date"] = form["date"];
+                TempData["Gender"] = form["Gender"];
                 TempData["Checkbox1"] = check;
-                TempData["Marital"] = marital;
-                TempData["Children"] = children;
+                TempData["Marital"] = form["marital"];
+                TempData["Children"] = form["children"];
                 return Redirect("~/Home/Result");
             }
 
