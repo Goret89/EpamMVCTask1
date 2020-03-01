@@ -76,7 +76,7 @@ namespace EpamMVCTask1.DLL.Models
             var tags = new List<Tag>()
             {
                 new Tag(){ Name = "div"
-                , Articles = new List<Article>(){ articles[0], articles[1], articles[2], articles[3], articles[0] 
+                , Articles = new List<Article>(){ articles[0], articles[1], articles[2], articles[3], articles[4] 
                 } },
                 new Tag(){ Name="margin"
                 , Articles = new List<Article>(){ articles[0], articles[1], articles[2], articles[3], articles[4] 
