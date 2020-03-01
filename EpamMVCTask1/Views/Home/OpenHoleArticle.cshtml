@@ -1,0 +1,23 @@
+﻿@model EpamMVCTask1.DLL.Models.Article
+
+@{
+    ViewBag.Title = "OpenHoleArticle";
+}
+
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+<h6>@Html.DisplayFor(model => model.DatePublish)</h6>
+<article>
+    <p>@Html.DisplayFor(model => model.Text)</p>
+</article>
+
+<b>
+    @foreach (var tag in Model.Tags)
+    {
+        @Html.DisplayFor(modelItem => tag.Name) <b>&nbsp</b>
+    }
+</b>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
+

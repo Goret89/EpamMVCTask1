@@ -14,12 +14,60 @@
         </ul>
     </nav>
     <main>*@
-        @foreach (var art in Model)
-        {
-            <h3>@art.Name</h3>
-            <h6>@art.DatePublish</h6>
-            <p>@art.Text</p>
-        }
-    @*</main>
 
-</section>*@
+@section vote{
+    @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+    {
+        <div class="ads-block">
+            <h3 class="ads-header">What ads do you want to see on the page</h3>
+            <div class="group-radiobuttons">
+                <p>Housing: @Html.RadioButton("Ads", "Housing")</p>
+                <p>Personal care: @Html.RadioButton("Ads", "Personal care")</p>
+                <p>Pets: @Html.RadioButton("Ads", "Pets")</p>
+                <p>Vehicle: @Html.RadioButton("Ads", "Vehicle")</p>
+                <p>Different: @Html.RadioButton("Ads", "Different")</p>
+            </div>
+            <input type="submit" value="Send" class="button" />
+        </div>
+
+    }
+}
+
+@foreach (var art in Model)
+{
+<h3>@Html.DisplayFor(modelItem => art.Name)</h3>
+<h6>@Html.DisplayFor(modelItem => art.DatePublish)</h6>
+<article>
+    <p>@Html.DisplayFor(modelItem => art.Text)</p>
+    @if (art.Text.Length <= 200)
+    {
+        <b>
+            @foreach (var tag in art.Tags)
+            {
+                @Html.DisplayFor(modelItem => tag.Name) <b>&nbsp</b>
+            }
+        </b>
+    }
+    @if (art.Text.Length > 200)
+    {
+        <a href="/Home/OpenHoleArticle/@art.Id">Details</a>
+        @*<button class="detail">Details</button>*@
+    }
+</article>
+
+    @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="~/Scripts/readmore.js"></script>
+        <script>
+            $('article').readmore({
+                maxHeight: 40,
+                moreLink: '<a href="#">More details</a>',
+                lessLink: '<a href="#">Collapse text</a>'
+            });
+        </script>*@
+}
+
+
+@*}*@
+@*</main>
+
+    </section>*@

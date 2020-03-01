@@ -14,6 +14,7 @@ namespace EpamMVCTask1.DLL.Models
         }
         public DbSet<Article> Articles { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
+        public DbSet<Tag> Tags { get; set; }
     }
 }
    

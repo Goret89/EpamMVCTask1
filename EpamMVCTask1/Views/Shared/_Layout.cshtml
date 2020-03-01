@@ -36,14 +36,9 @@
                     <li><a href="~/Home/Guest">Guest</a></li>
                     <li><a href="~/Home/Profile">Profile</a></li>
                 </ul>
+                @RenderSection("vote", false)
             </nav>
             <main>
-                @*@foreach (var art in Model)
-        {
-            <h3>@art.Name</h3>
-            <h6>@art.DatePublish</h6>
-            <p>@art.Text</p>
-        }*@
                 @RenderBody()
             </main>
 

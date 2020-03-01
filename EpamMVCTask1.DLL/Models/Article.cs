@@ -15,5 +15,7 @@ namespace EpamMVCTask1.DLL.Models
         public string Name { get; set; }
         public DateTime DatePublish { get; set; }
         public string Text { get; set; }
+
+        public virtual IList<Tag> Tags { get; set; }
     }
 }

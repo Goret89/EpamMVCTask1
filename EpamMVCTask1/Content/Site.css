@@ -68,6 +68,7 @@ nav {
     padding: 0;
     left: 75%;
 }
+
 main {
     margin-top: 60px;
     margin-right: 20%;
@@ -80,6 +81,7 @@ img {
     object-fit: cover;
     object-position: 0 0;
     position: relative;
+    max-height: 100px;
 }
 
 .title {
@@ -144,4 +146,21 @@ b{
 
 .top-ident{
     margin-top: 40px;
+}
+
+.inline{
+    display: flex;
+}
+
+.detail{
+    font-size:10px;
+    height: 18px;
+    margin-left: 15px;
+    background-color: lemonchiffon;
+    border: 1px solid grey;
+    width: 80px;
+}
+
+.inline-hide{
+    display: none;
 }

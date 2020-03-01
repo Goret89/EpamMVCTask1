@@ -1,38 +1,73 @@
-﻿//using EpamMVCTask1.DLL.Models;
+﻿using System.Data.Entity;
+using System.Linq;
+using System.Web.Mvc;
 using EpamMVCTask1.DLL.Models;
 using EpamMVCTask1.Extensions;
-using EpamMVCTask1.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
 
 namespace EpamMVCTask1.Controllers
 {
     public class HomeController : Controller
     {
         //Initializer initializer = new Initializer();
-        BlogContext initializer = new BlogContext();
+        private BlogContext initializer = new BlogContext();
+
         // GET: Home
         public ActionResult Index()
         {
-            return View(initializer.Articles); //initializer.articles
+            var article = initializer.Articles.Include(v => v.Tags).ToList();
+
+            foreach (var f in article)
+            {
+                string result = "";
+
+                if (f.Text.Length > 200)
+                {
+                    foreach (var d in f.Text.Take(200))
+                    {
+                        result += d;
+                    }
+
+                    f.Text = result + "...";
+                }
+            }
+
+            return View(article); 
         }
+
+            public ActionResult OpenHoleArticle(int? Id)
+        {
+            if (Id == null)
+            {
+                return HttpNotFound();
+            }
+
+            Article article = initializer.Articles.Find(Id);
+
+            if (article == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(article);
+        }
+
         public ActionResult Guest()
         {
-            return View(initializer.Feedbacks);/*Initializer.feedbacks*/
-        }/**/
+            return View(initializer.Feedbacks);
+        }
+
         //[HttpPost]
         //public RedirectResult Guest(Feedback feedback)
         //{
         //    initializer.feedbacks.Add(feedback);
         //    return Redirect("~/Home/Guest");
         //}
+
         public ActionResult AddFeedback()
         {
             return View();
         }
+
         [HttpPost]
         public ActionResult AddFeedback(DLL.Models.Feedback feedback)
         {
@@ -40,7 +75,7 @@ namespace EpamMVCTask1.Controllers
             return Redirect("~/Home/Guest");
         }
         
-        public ActionResult Profile(FormCollection form) // string name, string login, string email, string password,nstring date, string Gender, bool? checkbox1, string marital, string children
+        public ActionResult Profile(FormCollection form) 
         {
             string check = "";
 
@@ -66,8 +101,8 @@ namespace EpamMVCTask1.Controllers
             }
 
             return View();
-            
         }
+
         //[HttpPost]
         //public ActionResult Profile(string name, string login, string email, string password, 
         //    string date, string Gender, string checkbox1, string checkbox2)
